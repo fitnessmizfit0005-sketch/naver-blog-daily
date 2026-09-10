@@ -23,6 +23,7 @@ h1{font-size:18px;margin:0 0 4px}
 .tabbar{position:sticky;top:0;z-index:5;background:var(--bg);display:flex;gap:6px;overflow-x:auto;padding:8px 0;border-bottom:1px solid var(--line);margin-bottom:16px}
 .tab{flex:0 0 auto;padding:7px 12px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--fg);font-size:13px;cursor:pointer;white-space:nowrap}
 .tab.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.tab-gpt{border-style:dashed}
 .tab .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--warn);margin-left:6px;vertical-align:middle}
 .meta{display:grid;grid-template-columns:1fr;gap:2px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-bottom:10px}
 .mrow{display:flex;gap:10px;font-size:13px}
@@ -64,8 +65,8 @@ button.copy.done{background:var(--accent);color:#fff}
 </head><body>
 <div class="wrap">
   <h1>2026-09-10 발행 원고</h1>
-  <div class="sub">2개 · 생성 2026-09-10 13:01</div>
-  <div class="tabbar"><button class="tab active" data-i="0">진트쌤 07:10<span class=dot></span></button><button class="tab" data-i="1">모찌코치 09:10<span class=dot></span></button></div>
+  <div class="sub">2개 · 생성 2026-09-10 13:13</div>
+  <div class="tabbar"><button class="tab active" data-i="0">진트쌤 07:10<span class=dot></span></button><button class="tab" data-i="1">모찌코치 09:10<span class=dot></span></button><button class="tab tab-gpt" data-i="2">📦 GPT 번들</button></div>
   
 <section class="pane" id="pane-0" >
   <div class="meta"><div class="mrow"><span class="mk">블로그</span><span class="mv">진트쌤</span></div><div class="mrow"><span class="mk">슬롯</span><span class="mv">1) 웨이트트레이닝 (메인)</span></div><div class="mrow"><span class="mk">예약</span><span class="mv">07:10</span></div><div class="mrow"><span class="mk">강도</span><span class="mv">헤비</span></div><div class="mrow"><span class="mk">구조</span><span class="mv">구조 B — 공감도입 + 소제목별 정보 + FAQ 2~3 + 결론 + 관련글</span></div><div class="mrow"><span class="mk">장소태그</span><span class="mv">미즈핏 (김천 스튜디오)</span></div><div class="mrow"><span class="mk">태그</span><span class="mv">#김천PT #김천웨이트 #김천헬스장</span></div></div>
@@ -274,6 +275,161 @@ A. 됩니다. 순서는 웨이트 먼저, 유산소 나중을 권합니다.
 
 신발장 냄새 없애는 법 https://blog.naver.com/reviewcoach/zzzzz</pre>
   </details>
+</section>
+<section class="pane" id="pane-2" hidden>
+  <div class="bodybar">
+    <button class="copy big" data-copy="아래는 네이버 블로그에 발행한 하루치 포스팅 전문입니다.
+각 포스팅 본문 속 [이미지: ...] 표시마다 그 앞뒤 문맥에 맞는 이미지를 1장씩 생성해 주세요.
+조건:
+- 블로그에 자연스럽게 어울리는 사실적인 사진 톤 (과한 3D/CG 느낌 지양)
+- 이미지 안에 글자·워터마크·로고 없음
+- 인물이 들어갈 경우 얼굴이 특정되지 않게, 특정 실존 인물 묘사 금지
+- 각 이미지 앞에 &#x27;포스팅N-이미지M&#x27; 형식 번호를 붙여 출력
+
+=== 포스팅 1 : 진트쌤 07:10 / 헤비 / 이미지 1장 ===
+[제목] 김천 웨이트 트레이닝 초보 루틴 정리
+
+운동을 시작하고 3개월쯤 됐을 때 가장 많이 듣는 질문이 있습니다.
+
+
+
+웨이트 초보가 가장 먼저 잡아야 할 것
+
+무게보다 자세, 자세보다 빈도입니다. 이유를 하나씩 풀어보겠습니다.
+
+[이미지: 김천 스튜디오에서 트레이너가 초보 회원의 스쿼트 자세를 옆에서 봐주는 장면, 밝은 조명]
+
+
+
+1주차: 빈 봉으로 패턴 익히기
+
+첫 주는 무게를 올리지 않습니다. ...
+
+Q. 웨이트는 주 몇 회가 적당한가요?
+
+A. 초보는 주 2~3회로 시작해 회복을 확인하며 늘립니다.
+
+Q. 유산소랑 같이 해도 되나요?
+
+A. 됩니다. 순서는 웨이트 먼저, 유산소 나중을 권합니다.
+
+
+
+정리하며
+
+종합적으로 보면 초보 3개월은 무게 경쟁이 아니라 습관을 만드는 기간입니다.
+
+이 글은 일반적인 운동 정보이며, 통증·질환이 있는 경우 전문가 상담이 필요합니다.
+
+김천 PT 처음 시작할 때 체크리스트 https://blog.naver.com/jintssam/xxxxx
+
+무릎이 안 좋을 때 하는 하체 운동 https://blog.naver.com/jintssam/yyyyy
+
+
+=== 포스팅 2 : 모찌코치 09:10 / 스탠다드 / 이미지 1장 ===
+[제목] 옷장 습기 제거 방법 정리
+
+장마철만 되면 옷장 문 열 때 훅 끼치는 냄새 있잖아.
+
+
+
+옷장 습기, 왜 생기냐면
+
+환기 부족 + 덜 마른 옷 + 벽면 결로 이 세 가지가 대부분이야.
+
+[이미지: 옷장 내부에 제습제와 신문지를 배치한 정리된 모습, 깔끔한 화이트톤]
+
+
+
+순서대로 하면 되는 3단계
+
+1단계 비우고 환기, 2단계 제습제 배치, 3단계 옷 간격 띄우기.
+
+
+
+마무리
+
+한 번 세팅해두면 2~3주는 편해. 제습제 교체 주기만 체크하자.
+
+신발장 냄새 없애는 법 https://blog.naver.com/reviewcoach/zzzzz
+">📋 GPT 번들 전체 복사 (2개 포스팅)</button>
+    <span class="hint">복사해서 ChatGPT에 그대로 붙여넣기 · [이미지: ] 마다 1장 생성 요청 포함</span>
+  </div>
+  <details class="raw" open><summary>미리보기</summary><pre>아래는 네이버 블로그에 발행한 하루치 포스팅 전문입니다.
+각 포스팅 본문 속 [이미지: ...] 표시마다 그 앞뒤 문맥에 맞는 이미지를 1장씩 생성해 주세요.
+조건:
+- 블로그에 자연스럽게 어울리는 사실적인 사진 톤 (과한 3D/CG 느낌 지양)
+- 이미지 안에 글자·워터마크·로고 없음
+- 인물이 들어갈 경우 얼굴이 특정되지 않게, 특정 실존 인물 묘사 금지
+- 각 이미지 앞에 &#x27;포스팅N-이미지M&#x27; 형식 번호를 붙여 출력
+
+=== 포스팅 1 : 진트쌤 07:10 / 헤비 / 이미지 1장 ===
+[제목] 김천 웨이트 트레이닝 초보 루틴 정리
+
+운동을 시작하고 3개월쯤 됐을 때 가장 많이 듣는 질문이 있습니다.
+
+
+
+웨이트 초보가 가장 먼저 잡아야 할 것
+
+무게보다 자세, 자세보다 빈도입니다. 이유를 하나씩 풀어보겠습니다.
+
+[이미지: 김천 스튜디오에서 트레이너가 초보 회원의 스쿼트 자세를 옆에서 봐주는 장면, 밝은 조명]
+
+
+
+1주차: 빈 봉으로 패턴 익히기
+
+첫 주는 무게를 올리지 않습니다. ...
+
+Q. 웨이트는 주 몇 회가 적당한가요?
+
+A. 초보는 주 2~3회로 시작해 회복을 확인하며 늘립니다.
+
+Q. 유산소랑 같이 해도 되나요?
+
+A. 됩니다. 순서는 웨이트 먼저, 유산소 나중을 권합니다.
+
+
+
+정리하며
+
+종합적으로 보면 초보 3개월은 무게 경쟁이 아니라 습관을 만드는 기간입니다.
+
+이 글은 일반적인 운동 정보이며, 통증·질환이 있는 경우 전문가 상담이 필요합니다.
+
+김천 PT 처음 시작할 때 체크리스트 https://blog.naver.com/jintssam/xxxxx
+
+무릎이 안 좋을 때 하는 하체 운동 https://blog.naver.com/jintssam/yyyyy
+
+
+=== 포스팅 2 : 모찌코치 09:10 / 스탠다드 / 이미지 1장 ===
+[제목] 옷장 습기 제거 방법 정리
+
+장마철만 되면 옷장 문 열 때 훅 끼치는 냄새 있잖아.
+
+
+
+옷장 습기, 왜 생기냐면
+
+환기 부족 + 덜 마른 옷 + 벽면 결로 이 세 가지가 대부분이야.
+
+[이미지: 옷장 내부에 제습제와 신문지를 배치한 정리된 모습, 깔끔한 화이트톤]
+
+
+
+순서대로 하면 되는 3단계
+
+1단계 비우고 환기, 2단계 제습제 배치, 3단계 옷 간격 띄우기.
+
+
+
+마무리
+
+한 번 세팅해두면 2~3주는 편해. 제습제 교체 주기만 체크하자.
+
+신발장 냄새 없애는 법 https://blog.naver.com/reviewcoach/zzzzz
+</pre></details>
 </section>
 </div>
 <div id="toast"></div>

@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="ko"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>2026-09-10 발행 원고 · 2개</title>
+<!-- posts: 2 -->
+<style>
+:root{
+  --bg:#faf9f7; --fg:#1c1b19; --muted:#6b6862; --card:#ffffff; --line:#e6e3dd;
+  --accent:#2f6f4f; --accent-bg:#e8f2ec; --warn:#8a5a00; --warn-bg:#fbefd6;
+  --img-bg:#f1f4f8; --img-line:#c9d3e0;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#17181a; --fg:#e9e7e3; --muted:#9a968e; --card:#212225; --line:#34363a;
+  --accent:#7fd0a6; --accent-bg:#1e2f28; --warn:#e6b566; --warn-bg:#33291a;
+  --img-bg:#1d2530; --img-line:#33465e;
+}}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:15px/1.7 -apple-system,BlinkMacSystemFont,"Malgun Gothic","Apple SD Gothic Neo",sans-serif;margin:0}
+.wrap{max-width:860px;margin:0 auto;padding:20px 16px 80px}
+h1{font-size:18px;margin:0 0 4px}
+.sub{color:var(--muted);font-size:13px;margin-bottom:16px}
+.tabbar{position:sticky;top:0;z-index:5;background:var(--bg);display:flex;gap:6px;overflow-x:auto;padding:8px 0;border-bottom:1px solid var(--line);margin-bottom:16px}
+.tab{flex:0 0 auto;padding:7px 12px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--fg);font-size:13px;cursor:pointer;white-space:nowrap}
+.tab.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.tab .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--warn);margin-left:6px;vertical-align:middle}
+.meta{display:grid;grid-template-columns:1fr;gap:2px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-bottom:10px}
+.mrow{display:flex;gap:10px;font-size:13px}
+.mk{flex:0 0 64px;color:var(--muted)}
+.mv{flex:1}
+.notes{background:var(--warn-bg);color:var(--warn);border-radius:8px;padding:7px 10px;font-size:13px;margin-bottom:8px}
+.checks{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.badge{font-size:12px;padding:4px 9px;border-radius:999px;border:1px solid var(--line)}
+.b-ok{background:var(--accent-bg);color:var(--accent);border-color:transparent}
+.b-warn{background:var(--warn-bg);color:var(--warn);border-color:transparent}
+.b-na{background:var(--card);color:var(--muted)}
+.titles{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 12px;margin-bottom:12px}
+.title-row{display:flex;align-items:center;gap:8px;padding:5px 0;flex-wrap:wrap}
+.tlabel{flex:0 0 auto;font-size:11px;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:1px 6px}
+.tval{flex:1;min-width:180px;font-weight:600}
+.bodybar{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.hint{color:var(--muted);font-size:12px}
+button.copy{border:1px solid var(--accent);background:var(--accent-bg);color:var(--accent);border-radius:7px;padding:5px 10px;font-size:12px;cursor:pointer}
+button.copy.big{padding:10px;font-size:14px;font-weight:700}
+button.copy.mini{padding:2px 7px;font-size:11px;margin-right:6px}
+button.copy.done{background:var(--accent);color:#fff}
+.imgs,.raw{margin-bottom:14px}
+.imgs summary,.raw summary{cursor:pointer;color:var(--muted);font-size:13px}
+.imgs ul{list-style:none;padding:8px 0 0;margin:0}
+.imgs li{padding:4px 0;font-size:13px}
+.preview{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 16px}
+.preview p{margin:0 0 12px}
+.bk-h2{font-size:16px;margin:26px 0 10px;padding-left:9px;border-left:3px solid var(--accent)}
+.bk-h3{font-size:14px;margin:18px 0 8px;color:var(--muted)}
+.bk-img{background:var(--img-bg);border:1px dashed var(--img-line);border-radius:8px;padding:10px 12px;margin:12px 0;font-size:13px;color:var(--muted)}
+.bk-faq{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin:10px 0;font-size:14px}
+.bk-notice{font-style:italic;color:var(--muted);font-size:13px;margin:12px 0;padding-left:10px;border-left:2px solid var(--line)}
+.bk-link{font-size:13px;margin:6px 0}
+.bk-link .url{color:var(--muted);word-break:break-all}
+.raw pre{white-space:pre-wrap;word-break:break-word;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px;font-size:12px;line-height:1.6}
+#toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--accent);color:#fff;padding:9px 16px;border-radius:8px;font-size:13px;opacity:0;transition:opacity .2s;pointer-events:none}
+#toast.show{opacity:1}
+</style>
+</head><body>
+<div class="wrap">
+  <h1>2026-09-10 발행 원고</h1>
+  <div class="sub">2개 · 생성 2026-09-10 13:01</div>
+  <div class="tabbar"><button class="tab active" data-i="0">진트쌤 07:10<span class=dot></span></button><button class="tab" data-i="1">모찌코치 09:10<span class=dot></span></button></div>
+  
+<section class="pane" id="pane-0" >
+  <div class="meta"><div class="mrow"><span class="mk">블로그</span><span class="mv">진트쌤</span></div><div class="mrow"><span class="mk">슬롯</span><span class="mv">1) 웨이트트레이닝 (메인)</span></div><div class="mrow"><span class="mk">예약</span><span class="mv">07:10</span></div><div class="mrow"><span class="mk">강도</span><span class="mv">헤비</span></div><div class="mrow"><span class="mk">구조</span><span class="mv">구조 B — 공감도입 + 소제목별 정보 + FAQ 2~3 + 결론 + 관련글</span></div><div class="mrow"><span class="mk">장소태그</span><span class="mv">미즈핏 (김천 스튜디오)</span></div><div class="mrow"><span class="mk">태그</span><span class="mv">#김천PT #김천웨이트 #김천헬스장</span></div></div>
+  <div class="notes">📌 Tier3 김천웨이트 배정. 미즈핏 지도태그 필수. 건강정보 면책조항 포함.</div>
+  <div class="checks">
+    <span class="badge b-warn">404자(공백제외) / 535자(공백포함) · 목표 3,000~4,000 미달</span>
+    <span class="badge b-warn">메인키워드 &quot;김천웨이트&quot; 0회 · 제목 미포함</span>
+    <span class="badge b-ok">이미지 1장</span>
+  </div>
+
+  <div class="titles">
+    <div class="title-row">
+      <span class="tlabel">검색형</span>
+      <span class="tval">김천 웨이트 트레이닝 초보 루틴 정리</span>
+      <button class="copy" data-copy="김천 웨이트 트레이닝 초보 루틴 정리">복사</button>
+    </div>
+    <div class="title-row">
+      <span class="tlabel">홈추천형</span>
+      <span class="tval">웨이트 3개월 한 회원이 바꾼 딱 한 가지</span>
+      <button class="copy" data-copy="웨이트 3개월 한 회원이 바꾼 딱 한 가지">복사</button>
+    </div>
+  </div>
+
+  <div class="bodybar">
+    <button class="copy big" data-copy="운동을 시작하고 3개월쯤 됐을 때 가장 많이 듣는 질문이 있습니다.
+
+
+
+웨이트 초보가 가장 먼저 잡아야 할 것
+
+무게보다 자세, 자세보다 빈도입니다. 이유를 하나씩 풀어보겠습니다.
+
+[이미지: 김천 스튜디오에서 트레이너가 초보 회원의 스쿼트 자세를 옆에서 봐주는 장면, 밝은 조명]
+
+
+
+1주차: 빈 봉으로 패턴 익히기
+
+첫 주는 무게를 올리지 않습니다. ...
+
+Q. 웨이트는 주 몇 회가 적당한가요?
+
+A. 초보는 주 2~3회로 시작해 회복을 확인하며 늘립니다.
+
+Q. 유산소랑 같이 해도 되나요?
+
+A. 됩니다. 순서는 웨이트 먼저, 유산소 나중을 권합니다.
+
+
+
+정리하며
+
+종합적으로 보면 초보 3개월은 무게 경쟁이 아니라 습관을 만드는 기간입니다.
+
+이 글은 일반적인 운동 정보이며, 통증·질환이 있는 경우 전문가 상담이 필요합니다.
+
+김천 PT 처음 시작할 때 체크리스트 https://blog.naver.com/jintssam/xxxxx
+
+무릎이 안 좋을 때 하는 하체 운동 https://blog.naver.com/jintssam/yyyyy">📋 본문 전체 복사 (서식 없는 텍스트)</button>
+    <span class="hint">Ctrl+Shift+V 로 붙여넣기 · 소제목 줄은 드래그 후 "소제목1"</span>
+  </div>
+
+  <details class="imgs"><summary>이미지 프롬프트 1장</summary><ul><li><button class="copy mini" data-copy="[이미지: 김천 스튜디오에서 트레이너가 초보 회원의 스쿼트 자세를 옆에서 봐주는 장면, 밝은 조명]">복사</button><span>김천 스튜디오에서 트레이너가 초보 회원의 스쿼트 자세를 옆에서 봐주는 장면, 밝은 조명</span></li></ul></details>
+
+  <div class="preview">
+    <p>운동을 시작하고 3개월쯤 됐을 때 가장 많이 듣는 질문이 있습니다.</p>
+<h3 class="bk-h2">웨이트 초보가 가장 먼저 잡아야 할 것</h3>
+<p>무게보다 자세, 자세보다 빈도입니다. 이유를 하나씩 풀어보겠습니다.</p>
+<div class="bk-img">🖼 김천 스튜디오에서 트레이너가 초보 회원의 스쿼트 자세를 옆에서 봐주는 장면, 밝은 조명</div>
+<h4 class="bk-h3">1주차: 빈 봉으로 패턴 익히기</h4>
+<p>첫 주는 무게를 올리지 않습니다. ...</p>
+<div class="bk-faq"><b>Q. 웨이트는 주 몇 회가 적당한가요?</b><br>A. 초보는 주 2~3회로 시작해 회복을 확인하며 늘립니다.</div>
+<div class="bk-faq"><b>Q. 유산소랑 같이 해도 되나요?</b><br>A. 됩니다. 순서는 웨이트 먼저, 유산소 나중을 권합니다.</div>
+<h3 class="bk-h2">정리하며</h3>
+<p>종합적으로 보면 초보 3개월은 무게 경쟁이 아니라 습관을 만드는 기간입니다.</p>
+<div class="bk-notice">이 글은 일반적인 운동 정보이며, 통증·질환이 있는 경우 전문가 상담이 필요합니다.</div>
+<div class="bk-link">🔗 김천 PT 처음 시작할 때 체크리스트 <span class="url">https://blog.naver.com/jintssam/xxxxx</span></div>
+<div class="bk-link">🔗 무릎이 안 좋을 때 하는 하체 운동 <span class="url">https://blog.naver.com/jintssam/yyyyy</span></div>
+  </div>
+
+  <details class="raw">
+    <summary>붙여넣기 텍스트 원문 보기</summary>
+    <pre>운동을 시작하고 3개월쯤 됐을 때 가장 많이 듣는 질문이 있습니다.
+
+
+
+웨이트 초보가 가장 먼저 잡아야 할 것
+
+무게보다 자세, 자세보다 빈도입니다. 이유를 하나씩 풀어보겠습니다.
+
+[이미지: 김천 스튜디오에서 트레이너가 초보 회원의 스쿼트 자세를 옆에서 봐주는 장면, 밝은 조명]
+
+
+
+1주차: 빈 봉으로 패턴 익히기
+
+첫 주는 무게를 올리지 않습니다. ...
+
+Q. 웨이트는 주 몇 회가 적당한가요?
+
+A. 초보는 주 2~3회로 시작해 회복을 확인하며 늘립니다.
+
+Q. 유산소랑 같이 해도 되나요?
+
+A. 됩니다. 순서는 웨이트 먼저, 유산소 나중을 권합니다.
+
+
+
+정리하며
+
+종합적으로 보면 초보 3개월은 무게 경쟁이 아니라 습관을 만드는 기간입니다.
+
+이 글은 일반적인 운동 정보이며, 통증·질환이 있는 경우 전문가 상담이 필요합니다.
+
+김천 PT 처음 시작할 때 체크리스트 https://blog.naver.com/jintssam/xxxxx
+
+무릎이 안 좋을 때 하는 하체 운동 https://blog.naver.com/jintssam/yyyyy</pre>
+  </details>
+</section>
+<section class="pane" id="pane-1" hidden>
+  <div class="meta"><div class="mrow"><span class="mk">블로그</span><span class="mv">모찌코치</span></div><div class="mrow"><span class="mk">슬롯</span><span class="mv">09시 (검색형, 스탠다드)</span></div><div class="mrow"><span class="mk">예약</span><span class="mv">09:10</span></div><div class="mrow"><span class="mk">강도</span><span class="mv">스탠다드</span></div><div class="mrow"><span class="mk">구조</span><span class="mv">구조 3 — 문제제기 + 방법 3단계 + 제품 1~2 + 마무리</span></div><div class="mrow"><span class="mk">태그</span><span class="mv">#옷장정리 #습기제거 #제습 #생활꿀팁</span></div></div>
+  <div class="notes">🛒 쇼핑커넥트 고지문구 포함 확인 필요</div>
+  <div class="checks">
+    <span class="badge b-warn">210자(공백제외) / 289자(공백포함) · 목표 2,200~2,600 미달</span>
+    <span class="badge b-warn">메인키워드 &quot;옷장 습기제거&quot; 0회 · 제목 미포함</span>
+    <span class="badge b-ok">이미지 1장</span>
+  </div>
+
+  <div class="titles">
+    <div class="title-row">
+      <span class="tlabel">검색형</span>
+      <span class="tval">옷장 습기 제거 방법 정리</span>
+      <button class="copy" data-copy="옷장 습기 제거 방법 정리">복사</button>
+    </div>
+    <div class="title-row">
+      <span class="tlabel">홈추천형</span>
+      <span class="tval">장마철 옷장 눅눅함, 이 순서면 끝</span>
+      <button class="copy" data-copy="장마철 옷장 눅눅함, 이 순서면 끝">복사</button>
+    </div>
+  </div>
+
+  <div class="bodybar">
+    <button class="copy big" data-copy="장마철만 되면 옷장 문 열 때 훅 끼치는 냄새 있잖아.
+
+
+
+옷장 습기, 왜 생기냐면
+
+환기 부족 + 덜 마른 옷 + 벽면 결로 이 세 가지가 대부분이야.
+
+[이미지: 옷장 내부에 제습제와 신문지를 배치한 정리된 모습, 깔끔한 화이트톤]
+
+
+
+순서대로 하면 되는 3단계
+
+1단계 비우고 환기, 2단계 제습제 배치, 3단계 옷 간격 띄우기.
+
+
+
+마무리
+
+한 번 세팅해두면 2~3주는 편해. 제습제 교체 주기만 체크하자.
+
+신발장 냄새 없애는 법 https://blog.naver.com/reviewcoach/zzzzz">📋 본문 전체 복사 (서식 없는 텍스트)</button>
+    <span class="hint">Ctrl+Shift+V 로 붙여넣기 · 소제목 줄은 드래그 후 "소제목1"</span>
+  </div>
+
+  <details class="imgs"><summary>이미지 프롬프트 1장</summary><ul><li><button class="copy mini" data-copy="[이미지: 옷장 내부에 제습제와 신문지를 배치한 정리된 모습, 깔끔한 화이트톤]">복사</button><span>옷장 내부에 제습제와 신문지를 배치한 정리된 모습, 깔끔한 화이트톤</span></li></ul></details>
+
+  <div class="preview">
+    <p>장마철만 되면 옷장 문 열 때 훅 끼치는 냄새 있잖아.</p>
+<h3 class="bk-h2">옷장 습기, 왜 생기냐면</h3>
+<p>환기 부족 + 덜 마른 옷 + 벽면 결로 이 세 가지가 대부분이야.</p>
+<div class="bk-img">🖼 옷장 내부에 제습제와 신문지를 배치한 정리된 모습, 깔끔한 화이트톤</div>
+<h3 class="bk-h2">순서대로 하면 되는 3단계</h3>
+<p>1단계 비우고 환기, 2단계 제습제 배치, 3단계 옷 간격 띄우기.</p>
+<h3 class="bk-h2">마무리</h3>
+<p>한 번 세팅해두면 2~3주는 편해. 제습제 교체 주기만 체크하자.</p>
+<div class="bk-link">🔗 신발장 냄새 없애는 법 <span class="url">https://blog.naver.com/reviewcoach/zzzzz</span></div>
+  </div>
+
+  <details class="raw">
+    <summary>붙여넣기 텍스트 원문 보기</summary>
+    <pre>장마철만 되면 옷장 문 열 때 훅 끼치는 냄새 있잖아.
+
+
+
+옷장 습기, 왜 생기냐면
+
+환기 부족 + 덜 마른 옷 + 벽면 결로 이 세 가지가 대부분이야.
+
+[이미지: 옷장 내부에 제습제와 신문지를 배치한 정리된 모습, 깔끔한 화이트톤]
+
+
+
+순서대로 하면 되는 3단계
+
+1단계 비우고 환기, 2단계 제습제 배치, 3단계 옷 간격 띄우기.
+
+
+
+마무리
+
+한 번 세팅해두면 2~3주는 편해. 제습제 교체 주기만 체크하자.
+
+신발장 냄새 없애는 법 https://blog.naver.com/reviewcoach/zzzzz</pre>
+  </details>
+</section>
+</div>
+<div id="toast"></div>
+<script>
+function switchTab(i){
+  document.querySelectorAll('.tab').forEach((t,n)=>t.classList.toggle('active',n===i));
+  document.querySelectorAll('.pane').forEach((p,n)=>p.hidden=(n!==i));
+  window.scrollTo({top:0});
+}
+function toast(msg){
+  var t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show');
+  clearTimeout(window.__tt); window.__tt=setTimeout(()=>t.classList.remove('show'),1400);
+}
+async function doCopy(btn){
+  var text=btn.getAttribute('data-copy')||'';
+  try{ await navigator.clipboard.writeText(text); }
+  catch(e){
+    var ta=document.createElement('textarea'); ta.value=text; document.body.appendChild(ta);
+    ta.select(); document.execCommand('copy'); ta.remove();
+  }
+  var old=btn.textContent; btn.classList.add('done'); btn.textContent='복사됨 ✓';
+  toast('복사됨 ('+text.length+'자)');
+  setTimeout(()=>{btn.classList.remove('done'); btn.textContent=old;},1200);
+}
+document.addEventListener('click',function(e){
+  var b=e.target.closest('button.copy'); if(b) doCopy(b);
+  var t=e.target.closest('.tab'); if(t) switchTab(+t.dataset.i);
+});
+</script>
+</body></html>

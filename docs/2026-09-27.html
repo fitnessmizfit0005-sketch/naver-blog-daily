@@ -63,9 +63,19 @@ button.copy.done{background:var(--accent);color:#fff}
 #toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--accent);color:#fff;padding:9px 16px;border-radius:8px;font-size:13px;opacity:0;transition:opacity .2s;pointer-events:none}
 #toast.show{opacity:1}
 .sw{display:inline-block;background:#E5603F;color:#fff;border-radius:999px;padding:6px 14px;font-size:14px;font-weight:600;text-decoration:none;margin-bottom:10px}</style>
+<style id="hubnav-css">
+.hubnav{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}
+.hubnav a{display:inline-block;padding:6px 14px;border-radius:999px;border:1px solid #d9d6cf;background:#fff;color:#2a2826;font:600 14px/1.35 -apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;text-decoration:none;white-space:nowrap}
+.hubnav a:hover{border-color:#8f8b82}
+.hubnav a.on{background:#2a2826;border-color:#2a2826;color:#fff}
+.hubnav a:focus-visible{outline:2px solid #e8bc00;outline-offset:2px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .hubnav a{background:#26241f;border-color:#3b3934;color:#ece9e3}:root:not([data-theme="light"]) .hubnav a.on{background:#ece9e3;border-color:#ece9e3;color:#1c1b19}}
+:root[data-theme="dark"] .hubnav a{background:#26241f;border-color:#3b3934;color:#ece9e3}
+:root[data-theme="dark"] .hubnav a.on{background:#ece9e3;border-color:#ece9e3;color:#1c1b19}
+</style>
 </head><body>
 <div class="wrap">
-  <a class="sw" href="https://fitnessmizfit0005-sketch.github.io/daangn/">당근 소식으로 →</a>
+  <nav class="hubnav" aria-label="사이트 이동"><a class="on" href="https://fitnessmizfit0005-sketch.github.io/naver-blog-daily/" aria-current="page">네이버 블로그</a><a href="https://fitnessmizfit0005-sketch.github.io/daangn/">당근 소식</a><a href="https://fitnessmizfit0005-sketch.github.io/shopping-shorts/">쇼핑쇼츠</a></nav>
   <h1>2026-09-27 발행 원고</h1>
   <div class="sub">18개 · 생성 2026-09-22 03:26</div>
   <div class="tabbar"><button class="tab active" data-i="0">진트쌤 09:40</button><button class="tab" data-i="1">진트쌤 12:10</button><button class="tab" data-i="2">진트쌤 14:50</button><button class="tab" data-i="3">진트쌤 17:40</button><button class="tab" data-i="4">진트쌤 20:30</button><button class="tab" data-i="5">모찌코치 10:10</button><button class="tab" data-i="6">모찌코치 13:10</button><button class="tab" data-i="7">모찌코치 16:20</button><button class="tab" data-i="8">모찌코치 19:40</button><button class="tab" data-i="9">오늘뭐지 10:40</button><button class="tab" data-i="10">오늘뭐지 13:40</button><button class="tab" data-i="11">오늘뭐지 16:40</button><button class="tab" data-i="12">오늘뭐지 19:20</button><button class="tab" data-i="13">스뷰김천 09:50</button><button class="tab" data-i="14">스뷰김천 11:50</button><button class="tab" data-i="15">스뷰김천 14:20</button><button class="tab" data-i="16">스뷰김천 17:10</button><button class="tab" data-i="17">스뷰김천 21:20</button><button class="tab tab-gpt" data-i="18">📦 GPT 번들</button></div>

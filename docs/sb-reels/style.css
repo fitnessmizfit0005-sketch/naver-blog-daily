@@ -77,6 +77,8 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-off
 .pk p{white-space:pre-wrap;margin:4px 0 0;font-size:14px}
 .up{border:1px solid var(--line);border-radius:8px;padding:8px 12px;display:grid;gap:8px}
 .up summary{font-weight:700;cursor:pointer}
+.mob{border-color:var(--accent,#e8590c);border-width:2px}
+.mobh{font-weight:700;display:flex;flex-wrap:wrap;gap:6px;align-items:baseline}
 .up3 .lbl{font-size:13px;font-weight:700;color:var(--sub)}
 .up3 .found{margin-right:0}
 .scenes{margin:0 0 4px;padding-left:18px}

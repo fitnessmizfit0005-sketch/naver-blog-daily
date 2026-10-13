@@ -56,7 +56,7 @@ function render(){
       ${fold?`</summary><div class="fbody">`:""}
       <dl><dt>일련번호</dt><dd><b class="sid">${esc(it.id)}</b><button class="copy" type="button" data-c="${esc(it.id)}">복사</button><span class="hint">캡컷 프로젝트명 · 완성파일 ${esc(it.id)}.mp4</span></dd>
       ${it.dm_keyword?`<dt>댓글 키워드</dt><dd><b>${esc(it.dm_keyword)}</b></dd>`:""}
-      ${it.scenes?`<dt>장면 구성</dt><dd>${esc(it.scenes)}</dd>`:""}</dl>
+      ${it.basis?`<dt>근거</dt><dd>${esc(it.basis)}</dd>`:""}${it.source_tip?`<dt>소스 고를 때</dt><dd>${esc(it.source_tip)}</dd>`:""}${it.scenes?`<dt>장면 구성</dt><dd>${esc(it.scenes)}</dd>`:""}</dl>
       ${box("상단 후킹",it.hook_top)}${box("TTS 대본",it.script)}${it.edit_notes?`<details class="up"><summary>편집 기록 (컷·자막·강조·스티커)</summary>${box("편집 기록",it.edit_notes)}</details>`:""}${box("썸네일",it.thumb)}${it.file?`<p class="hint">🎬 ${esc(it.file)}</p>`:""}${upl(it)}
       <div class="actions">
         <button class="btn act" type="button" data-cmd="${esc(it.id)} ${esc(it.category)}관리 주제 3개 제안해줘">주제 제안</button>

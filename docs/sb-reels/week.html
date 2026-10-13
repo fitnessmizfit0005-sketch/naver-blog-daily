@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>스뷰 릴스 주간 제작표</title>
+<link rel="stylesheet" href="style.css">
+<style id="hubnav-css">
+.hubnav{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}
+.hubnav a{display:inline-block;padding:6px 14px;border-radius:999px;border:1px solid #d9d6cf;background:#fff;color:#2a2826;font:600 14px/1.35 -apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;text-decoration:none;white-space:nowrap}
+.hubnav a:hover{border-color:#8f8b82}
+.hubnav a.on{background:#2a2826;border-color:#2a2826;color:#fff}
+.hubnav a:focus-visible{outline:2px solid #e8bc00;outline-offset:2px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .hubnav a{background:#26241f;border-color:#3b3934;color:#ece9e3}:root:not([data-theme="light"]) .hubnav a.on{background:#ece9e3;border-color:#ece9e3;color:#1c1b19}}
+:root[data-theme="dark"] .hubnav a{background:#26241f;border-color:#3b3934;color:#ece9e3}
+:root[data-theme="dark"] .hubnav a.on{background:#ece9e3;border-color:#ece9e3;color:#1c1b19}
+</style>
+</head><body>
+<div class="wrap">
+  <nav class="hubnav" aria-label="사이트 이동"><a href="https://fitnessmizfit0005-sketch.github.io/naver-blog-daily/">네이버 블로그</a><a href="https://fitnessmizfit0005-sketch.github.io/daangn/">당근 소식</a><a href="https://fitnessmizfit0005-sketch.github.io/shopping-shorts/">쇼핑쇼츠</a><a class="on" href="https://fitnessmizfit0005-sketch.github.io/naver-blog-daily/sb-reels/" aria-current="page">스뷰 릴스</a></nav>
+  <a class="btn" href="./">← 주차 목록</a>
+  <h1 id="h">주간 제작표</h1>
+  <p class="lead" id="lead"></p>
+  <div class="bar"><span id="cnt"></span><div class="meter"><i id="mt" style="width:0"></i></div></div>
+  <div class="tools"><a class="btn primary" id="edit" target="_blank" rel="noopener">✎ GitHub에서 이 주 편집</a></div>
+  <div class="filters" id="filters"></div>
+  <main id="list"></main>
+  <p class="foot">상태·주제·메모를 바꾸려면 위의 편집 버튼 → 연필 아이콘 → 고친 뒤 <b>Commit changes</b>. 1~2분 뒤 반영돼요.<br>상태 값: 대기 · 대본완료 · 편집완료 · 업로드완료<br>작업 순서: [주제 제안] → 주제 고르기 → [대본 작성] → 캡컷 프로젝트(일련번호 이름)에서 TTS(Sanfte Seele)·자동캡션 → 캡컷 닫기 → [캡컷 편집 시작] → 확인 후 내보내기 → 업로드 패키지로 8개 플랫폼 업로드. 버튼은 명령을 복사해요. Claude 대화창에 붙여넣으세요.</p>
+  <div class="toast" id="toast" role="status" hidden></div>
+</div>
+<script>
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const DOW=["일","월","화","수","목","금","토"];
+const w=new URLSearchParams(location.search).get("w")||"";
+let data=null, filter="전체";
+const ORDER=["대기","대본완료","편집완료","업로드완료"];
+const STAGE=it=>Math.max(0,ORDER.indexOf(it.status));
+const openDone=new Set();
+function fmt(d){const x=new Date(d+"T00:00:00");return `${x.getMonth()+1}/${x.getDate()} (${DOW[x.getDay()]})`}
+function nextSlot(items){const t=new Date().toISOString().slice(0,10);return items.findIndex(it=>it.date>=t&&it.status!=="업로드완료")}
+const box=(t,v)=>v?`<div class="pk"><div class="pkh">${t} <button class="copy" type="button" data-c="${esc(v)}">복사</button></div><p>${esc(v)}</p></div>`:"";
+function upl(it){const u=it.upload||{};if(!u.instagram)return "";
+  return `<details class="up"><summary>업로드 패키지 (8개 플랫폼 · 페이스북은 인스타 공유)</summary>${box("인스타 캡션",u.instagram)}${box("고정 댓글",it.pin_comment)}${box("DM 문구 (댓글 단 분께)",it.dm_text)}${box("틱톡",u.tiktok)}${box("유튜브 쇼츠 제목",u.youtube_title)}${box("유튜브 쇼츠 설명",u.youtube_desc)}${box("네이버플레이스 소식 제목",u.naver_place_title)}${box("네이버플레이스 소식 본문",u.naver_place)}${box("네이버 클립",u.naver_clip)}${box("스레드",u.threads)}${box("당근마켓 스토리",u.daangn)}${box("카카오톡 채널 제목",u.kakao_title)}${box("카카오톡 채널 본문",u.kakao)}</details>`}
+function toast(m){const t=document.getElementById("toast");t.textContent=m;t.hidden=false;clearTimeout(t._h);t._h=setTimeout(()=>t.hidden=true,2600)}
+function render(){
+  const items=data.items,nx=nextSlot(items);
+  const done=items.filter(i=>i.status==="업로드완료").length;
+  document.getElementById("cnt").textContent=`${done} / ${items.length} 업로드 완료`;
+  document.getElementById("mt").style.width=(done/items.length*100)+"%";
+  document.getElementById("filters").innerHTML=["전체",...ORDER].map(s=>`<button type="button" aria-pressed="${s===filter}" data-f="${s}">${s}</button>`).join("");
+  document.getElementById("list").innerHTML=items.map((it,i)=>({...it,i})).filter(it=>filter==="전체"||it.status===filter).map(it=>{
+    const fold=it.status==="업로드완료";
+    return `<section class="day"><h3>${fmt(it.date)}<small>${esc(it.category)}관리</small></h3>
+    ${fold?`<details class="slot done fold" data-fold="${esc(it.id)}"${openDone.has(it.id)?" open":""}><summary>`:`<article class="slot${it.i===nx?" now":""}">`}
+      <div class="head"><span class="no">#${String(it.i+1).padStart(2,"0")}</span><span class="name">${esc(it.name||"주제 미정")}</span><span class="cat">${esc(it.category)}</span>
+      <span class="st" data-s="${esc(it.status)}">${it.i===nx?"다음 업로드 · ":""}${esc(it.status)}</span></div>
+      ${fold?`</summary><div class="fbody">`:""}
+      <dl><dt>일련번호</dt><dd><b class="sid">${esc(it.id)}</b><button class="copy" type="button" data-c="${esc(it.id)}">복사</button><span class="hint">캡컷 프로젝트명 · 완성파일 ${esc(it.id)}.mp4</span></dd>
+      ${it.dm_keyword?`<dt>댓글 키워드</dt><dd><b>${esc(it.dm_keyword)}</b></dd>`:""}
+      ${it.scenes?`<dt>장면 구성</dt><dd>${esc(it.scenes)}</dd>`:""}</dl>
+      ${box("상단 후킹",it.hook_top)}${box("TTS 대본",it.script)}${upl(it)}
+      <div class="actions">
+        <button class="btn act" type="button" data-cmd="${esc(it.id)} ${esc(it.category)}관리 주제 3개 제안해줘">주제 제안</button>
+        <button class="btn primary act" type="button" data-cmd="${esc(it.id)} 대본 작성해줘 (${esc(it.category)}관리${it.name?" · "+esc(it.name):""})">대본 작성</button>
+        <button class="btn act" type="button" data-cmd="${esc(it.id)} 캡컷 편집 시작해줘" ${STAGE(it)>=1?"":"disabled"}>캡컷 편집 시작</button>
+        <button class="btn act" type="button" data-cmd="${esc(it.id)} 업로드 패키지 작성해줘" ${STAGE(it)>=2?"":"disabled"}>업로드 패키지</button>
+      </div>
+      ${it.memo?`<div class="memo">📝 ${esc(it.memo)}</div>`:""}
+    ${fold?"</div></details>":"</article>"}</section>`}).join("");
+}
+document.addEventListener("click",e=>{
+  const f=e.target.closest("[data-f]");if(f){filter=f.dataset.f;render();return}
+  const a=e.target.closest(".act");if(a){const ok=()=>toast("명령을 복사했어요. Claude 대화창에 붙여넣으세요: "+a.dataset.cmd);
+    if(navigator.clipboard)navigator.clipboard.writeText(a.dataset.cmd).then(ok).catch(()=>toast(a.dataset.cmd));else toast(a.dataset.cmd);return}
+  const c=e.target.closest(".copy");if(!c)return;e.preventDefault();
+  if(navigator.clipboard)navigator.clipboard.writeText(c.dataset.c).then(()=>{c.textContent="복사됨";setTimeout(()=>c.textContent="복사",1200)}).catch(()=>{});
+});
+document.addEventListener("toggle",e=>{const d=e.target;if(!d.dataset||!d.dataset.fold)return;d.open?openDone.add(d.dataset.fold):openDone.delete(d.dataset.fold)},true);
+document.getElementById("edit").href=`https://github.com/fitnessmizfit0005-sketch/naver-blog-daily/edit/main/docs/sb-reels/data/${encodeURIComponent(w)}.json`;
+fetch(`data/${encodeURIComponent(w)}.json`,{cache:"no-store"}).then(r=>{if(!r.ok)throw 0;return r.text()}).then(t=>{
+  try{data=JSON.parse(t)}catch(err){throw "parse"}
+  document.getElementById("h").textContent=data.label;
+  document.getElementById("lead").textContent=`${data.items.length}개 · 1일 1릴스`;
+  document.title=`스뷰 릴스 ${data.week}`;render();
+}).catch(err=>{document.getElementById("list").innerHTML=`<div class="err">${err==="parse"?"데이터 파일 문법이 깨졌어요. 방금 고친 줄에서 쉼표(,)나 따옴표(\")가 빠졌는지 확인해 주세요.":"이 주차 데이터를 찾지 못했어요."}</div>`});
+</script>
+</body></html>

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>스뷰 릴스 제작표</title>
+<link rel="stylesheet" href="style.css">
+<style id="hubnav-css">
+.hubnav{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}
+.hubnav a{display:inline-block;padding:6px 14px;border-radius:999px;border:1px solid #d9d6cf;background:#fff;color:#2a2826;font:600 14px/1.35 -apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;text-decoration:none;white-space:nowrap}
+.hubnav a:hover{border-color:#8f8b82}
+.hubnav a.on{background:#2a2826;border-color:#2a2826;color:#fff}
+.hubnav a:focus-visible{outline:2px solid #e8bc00;outline-offset:2px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .hubnav a{background:#26241f;border-color:#3b3934;color:#ece9e3}:root:not([data-theme="light"]) .hubnav a.on{background:#ece9e3;border-color:#ece9e3;color:#1c1b19}}
+:root[data-theme="dark"] .hubnav a{background:#26241f;border-color:#3b3934;color:#ece9e3}
+:root[data-theme="dark"] .hubnav a.on{background:#ece9e3;border-color:#ece9e3;color:#1c1b19}
+</style>
+</head><body>
+<div class="wrap">
+  <nav class="hubnav" aria-label="사이트 이동"><a href="https://fitnessmizfit0005-sketch.github.io/naver-blog-daily/">네이버 블로그</a><a href="https://fitnessmizfit0005-sketch.github.io/daangn/">당근 소식</a><a href="https://fitnessmizfit0005-sketch.github.io/shopping-shorts/">쇼핑쇼츠</a><a class="on" href="https://fitnessmizfit0005-sketch.github.io/naver-blog-daily/sb-reels/" aria-current="page">스뷰 릴스</a></nav>
+  <h1>스페이스뷰티 김천평화점 릴스 제작표</h1>
+  <p class="lead">1일 1릴스 · 등 → 복부 → 얼굴 → 팔뚝 → 하체 → 두피 순환</p>
+  <ul class="weeks" id="weeks"><li class="lead">불러오는 중…</li></ul>
+  <section class="box" id="rules"><h2>제작 규칙</h2><ol></ol></section>
+  <div class="tools">
+    <a class="btn" href="https://github.com/fitnessmizfit0005-sketch/naver-blog-daily/edit/main/docs/sb-reels/data/rules.json" target="_blank" rel="noopener">✎ 규칙 편집</a>
+    <a class="btn" href="https://github.com/fitnessmizfit0005-sketch/naver-blog-daily/tree/main/docs/sb-reels/data" target="_blank" rel="noopener">데이터 폴더</a>
+  </div>
+</div>
+<script>
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+fetch("data/weeks.json",{cache:"no-store"}).then(r=>r.json()).then(ws=>{
+  ws.sort((a,b)=>b.week.localeCompare(a.week));
+  document.getElementById("weeks").innerHTML=ws.map(w=>`<li><a href="week.html?w=${encodeURIComponent(w.week)}"><span>${esc(w.label)}</span><small>${esc(w.count)}개 →</small></a></li>`).join("");
+}).catch(()=>{document.getElementById("weeks").innerHTML='<li class="err">data/weeks.json을 읽지 못했어요. 쉼표나 따옴표가 빠졌는지 확인해 주세요.</li>'});
+fetch("data/rules.json",{cache:"no-store"}).then(r=>r.json()).then(d=>{
+  document.querySelector("#rules ol").innerHTML=d.rules.map(r=>`<li>${esc(r)}</li>`).join("");
+}).catch(()=>{});
+</script>
+</body></html>

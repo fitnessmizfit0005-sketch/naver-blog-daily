@@ -11,8 +11,9 @@
 
 > 네이버 에디터 조작은 100% 수동. 이 페이지는 복붙용 참고 자료.
 
-## Vital Food Lab (영문 워드프레스 블로그)
+## 애드센스 (Vital Food Lab, 영문 워드프레스 블로그)
 
-- `docs/vitalfoodlab/<날짜>.html` — 하루 1개 예약 발행 원고 (글 정보·본문 복사·이미지 가이드·체크리스트).
-- 원고 데이터: `vitalfoodlab/posts/<날짜>.json` + `<날짜>.body.html` → `python3 vitalfoodlab/build.py` 로 페이지 생성.
+- 원고 파일: `docs/vitalfoodlab/posts/<날짜>.md` (맨 위 `---` 글 정보, 본문 HTML, `=== IMAGES ===` 이미지 3장)
+- 페이지: `docs/vitalfoodlab/index.html` (목록 + 새 원고 올리기), `post.html?d=<날짜>` (복사 버튼·이미지 가이드·체크리스트·자동 점검)
+- 빌드 과정 없음: 깃허브에 원고 파일만 저장하면 페이지가 그 파일을 읽어서 화면을 만든다.
 - 공개 URL: https://fitnessmizfit0005-sketch.github.io/naver-blog-daily/vitalfoodlab/

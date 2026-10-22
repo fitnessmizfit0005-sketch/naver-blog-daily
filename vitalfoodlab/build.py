@@ -19,7 +19,7 @@ HUBNAV = (
     '<a href="https://fitnessmizfit0005-sketch.github.io/daangn/">당근 소식</a>'
     '<a href="https://fitnessmizfit0005-sketch.github.io/shopping-shorts/">쇼핑쇼츠</a>'
     '<a href="https://fitnessmizfit0005-sketch.github.io/naver-blog-daily/sb-reels/">스뷰 릴스</a>'
-    '<a class="on" aria-current="page" href="' + BASE + '">Vital Food Lab</a>'
+    '<a class="on" aria-current="page" href="' + BASE + '">애드센스</a>'
     '</nav>'
 )
 
@@ -158,7 +158,7 @@ def build_post(meta):
 <title>{esc(meta['date'])} · {esc(meta['title'])}</title><style>{CSS}</style></head>
 <body data-date="{esc(meta['date'])}"><div class="wrap">
 {HUBNAV}
-<p class="sub"><a href="index.html">← Vital Food Lab 목록</a></p>
+<p class="sub"><a href="index.html">← 애드센스 목록</a></p>
 <h1>{esc(meta['title'])}</h1>
 <p class="sub">{esc(meta['schedule_kst'])} 발행 · {esc(meta['category'])} · {esc(meta['format'])}</p>
 <div class="notes">{esc(meta.get('notes',''))}<br>{esc(meta.get('sources_checked',''))}</div>
@@ -185,9 +185,9 @@ def build_index(items):
         for m, w in sorted(items, key=lambda x: x[0]["date"], reverse=True))
     page = f"""<!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Vital Food Lab 발행 원고</title><style>{CSS}</style></head><body><div class="wrap">
+<title>애드센스 발행 원고</title><style>{CSS}</style></head><body><div class="wrap">
 {HUBNAV}
-<h1>Vital Food Lab 예약 발행 원고</h1>
+<h1>애드센스 예약 발행 원고</h1>
 <p class="sub">하루 1개 · 12:00 UTC (한국 21:00) · 날짜를 눌러 원고를 열고 복사해서 워드프레스에 붙여넣으세요.</p>
 <ul class="list">{lis}</ul></div></body></html>"""
     (OUT / "index.html").write_text(page, encoding="utf-8")

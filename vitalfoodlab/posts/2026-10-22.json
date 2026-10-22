@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-22",
+  "schedule_utc": "2026-10-22 12:00",
+  "schedule_kst": "2026-10-22 (목) 21:00",
+  "category": "Healthy Living",
+  "format": "F 해설형",
+  "title": "How Many Steps a Day Do You Really Need?",
+  "slug": "how-many-steps-a-day",
+  "focus_keyword": "how many steps a day",
+  "meta_description": "How many steps a day do you really need? See what large studies found, what your step count means by age, and easy ways to add more steps to your day.",
+  "tags": ["how many steps a day", "walking for health", "daily steps", "healthy aging", "over 50"],
+  "body_file": "2026-10-22.body.html",
+  "images": [
+    {
+      "label": "Image 1 — Featured Image + 도입 두 번째 문단 아래",
+      "prompt": "16:9 horizontal landscape image, wide composition, a middle-aged woman in comfortable sneakers walking briskly on a tree-lined park path in soft morning light, smartwatch visible on her wrist, natural colors, realistic lifestyle photography, natural daylight, minimal background clutter, high resolution, professional health blog style",
+      "filename": "how-many-steps-a-day.jpg",
+      "alt": "how many steps a day woman walking in a park"
+    },
+    {
+      "label": "Image 2 — \"Easy Ways to Add 2,000 Steps\" 제목 바로 위",
+      "prompt": "16:9 horizontal landscape image, wide composition, close-up of a person's feet in walking shoes climbing outdoor concrete stairs, a phone with a step counter app showing in one hand, bright natural daylight, realistic texture, clean lifestyle photography, high resolution, professional health blog style",
+      "filename": "ways-to-add-more-steps-a-day.jpg",
+      "alt": "easy ways to add more steps a day"
+    },
+    {
+      "label": "Image 3 — \"Frequently Asked Questions\" 제목 바로 위",
+      "prompt": "16:9 horizontal landscape image, wide composition, an older couple walking together on a quiet neighborhood sidewalk in early evening, relaxed and smiling, warm natural light, realistic lifestyle photography, minimal background, high resolution, professional health blog style",
+      "filename": "daily-steps-walking-for-health.jpg",
+      "alt": "daily steps walking for health older couple"
+    }
+  ],
+  "notes": "Healthy Living 카테고리 첫 글. 카테고리 선택 시 Healthy Living 체크.",
+  "sources_checked": "PubMed 3건 확인: 35247352, 31141585, 37676198"
+}

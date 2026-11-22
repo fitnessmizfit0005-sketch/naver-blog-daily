@@ -18,6 +18,10 @@ GROUP1 = ["진트쌤", "모찌코치", "오늘뭐지"]
 GROUP1_LABEL = "진트쌤·모찌코치·오늘뭐지"
 GROUP2_LABEL = "스뷰김천·은이·제시카"
 LINK_MARK = "<!-- gpt-split-links -->"
+TOP_MARK = "<!-- gpt-txt-top -->"
+BASE_URL = "https://fitnessmizfit0005-sketch.github.io/naver-blog-daily/"
+TXT_MAX_POSTS = 7        # txt 파일 하나에 넣을 최대 포스팅 수
+TXT_MAX_BYTES = 45000    # txt 파일 하나의 최대 크기(대략) — 넘으면 다음 파일로
 
 POST_HEAD = re.compile(r"^=== 포스팅 (\d+) : (\S+) .*===\s*$", re.M)
 DATE_FILE = re.compile(r"^\d{4}-\d{2}-\d{2}\.html$")
@@ -104,6 +108,63 @@ def inject_links(page: str, sec_start: int, date: str, c1: int, c2: int) -> str:
     return page[:gt] + "\n  " + links + page[gt:]
 
 
+def split_txt(blocks):
+    """포스팅 블록들을 TXT_MAX_POSTS / TXT_MAX_BYTES 기준으로 묶는다."""
+    groups, cur, size = [], [], 0
+    for b in blocks:
+        bs = len(b.encode("utf-8"))
+        if cur and (len(cur) >= TXT_MAX_POSTS or size + bs > TXT_MAX_BYTES):
+            groups.append(cur)
+            cur, size = [], 0
+        cur.append(b)
+        size += bs
+    if cur:
+        groups.append(cur)
+    return groups
+
+
+def write_txt(docs, date, intro, blocks):
+    """GPT 전용 순수 텍스트 파일(펼침·스크립트 없음): YYYY-MM-DD-gpt-1.txt … + YYYY-MM-DD-gpt-index.txt.
+    각 파일 맨 끝 줄은 '=== END N건 ==='. index는 가장 마지막에 쓴다(배포는 한꺼번에 올라가지만 순서도 지킴)."""
+    for old in docs.glob(f"{date}-gpt-*.txt"):
+        old.unlink()
+    groups = split_txt(blocks)
+    total = len(groups)
+    nums = lambda g: [int(POST_HEAD.match(b).group(1)) for b in g]
+    lines = [f"{date} GPT 원고 텍스트 목록 — 파일 {total}개 · 포스팅 합계 {len(blocks)}건", ""]
+    for k, g in enumerate(groups, 1):
+        n = nums(g)
+        blogs = []
+        for b in g:
+            bl = POST_HEAD.match(b).group(2)
+            if bl not in blogs:
+                blogs.append(bl)
+        head = (f"### {date} GPT 원고 파일 {k}/{total} · 포스팅 {n[0]}~{n[-1]}번 · {len(g)}건 "
+                f"({'·'.join(blogs)})\n"
+                "### 포스팅 번호와 이미지 이름은 원래 번호 그대로입니다. 맨 끝 END 줄까지 읽혀야 정상입니다.\n\n")
+        body = head + intro + "".join(g).rstrip() + f"\n\n=== END {len(g)}건 ===\n"
+        name = f"{date}-gpt-{k}.txt"
+        (docs / name).write_text(body, encoding="utf-8")
+        lines.append(f"{k}. {BASE_URL}{name}  — 포스팅 {n[0]}~{n[-1]}번 · {len(g)}건 · {len(body)}자")
+    lines += ["", f"=== END 파일 {total}개 · 포스팅 {len(blocks)}건 ==="]
+    (docs / f"{date}-gpt-index.txt").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    return total
+
+
+def inject_top(page, date, n_files):
+    """원고 페이지 맨 위(숨겨지지 않은 곳)에 GPT용 txt 주소를 글자 그대로 적는다."""
+    if TOP_MARK in page:
+        page = re.sub(re.escape(TOP_MARK) + r".*?" + re.escape(TOP_MARK + "-end"), "", page, flags=re.S)
+    urls = "<br>".join(f"{BASE_URL}{date}-gpt-{k}.txt" for k in range(1, n_files + 1))
+    block = (f'{TOP_MARK}<div style="padding:10px 14px;margin:8px;border:1px solid #2f6f4f;border-radius:8px;'
+             f'background:#e8f2ec;font-size:13px;word-break:break-all">GPT용 원고 텍스트(파일 {n_files}개) — 목록: '
+             f'{BASE_URL}{date}-gpt-index.txt<br>{urls}</div>{TOP_MARK}-end')
+    m = re.search(r"<body[^>]*>", page)
+    if not m:
+        return page
+    return page[:m.end()] + "\n" + block + page[m.end():]
+
+
 def main(docs="docs"):
     docs = pathlib.Path(docs)
     made = 0
@@ -123,9 +184,11 @@ def main(docs="docs"):
             build(date, 1, GROUP1_LABEL, intro, g1, GROUP2_LABEL), encoding="utf-8")
         (docs / f"{date}-gpt2.html").write_text(
             build(date, 2, GROUP2_LABEL, intro, g2, GROUP1_LABEL), encoding="utf-8")
-        f.write_text(inject_links(page, sec_start, date, len(g1), len(g2)), encoding="utf-8")
+        n_files = write_txt(docs, date, intro, g1 + g2)
+        page = inject_links(page, sec_start, date, len(g1), len(g2))
+        f.write_text(inject_top(page, date, n_files), encoding="utf-8")
         made += 1
-    print(f"GPT 번들 분할: {made}일치")
+    print(f"GPT 번들 분할: {made}일치 (html 2개 + txt 여러 개 + index)")
 
 
 if __name__ == "__main__":

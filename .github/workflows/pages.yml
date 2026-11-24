@@ -29,5 +29,7 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: docs
+      - name: 아티팩트 등록 대기 (deploy가 너무 빨리 찾으면 0개로 실패함)
+        run: sleep 15
       - id: deployment
         uses: actions/deploy-pages@v4

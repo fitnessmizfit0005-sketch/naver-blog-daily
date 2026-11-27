@@ -155,10 +155,12 @@ def inject_top(page, date, n_files):
     """원고 페이지 맨 위(숨겨지지 않은 곳)에 GPT용 txt 주소를 글자 그대로 적는다."""
     if TOP_MARK in page:
         page = re.sub(re.escape(TOP_MARK) + r".*?" + re.escape(TOP_MARK + "-end"), "", page, flags=re.S)
-    urls = "<br>".join(f"{BASE_URL}{date}-gpt-{k}.txt" for k in range(1, n_files + 1))
-    block = (f'{TOP_MARK}<div style="padding:10px 14px;margin:8px;border:1px solid #2f6f4f;border-radius:8px;'
-             f'background:#e8f2ec;font-size:13px;word-break:break-all">GPT용 원고 텍스트(파일 {n_files}개) — 목록: '
-             f'{BASE_URL}{date}-gpt-index.txt<br>{urls}</div>{TOP_MARK}-end')
+    # 2026-11-27: 원고를 볼 때 화면을 밀어내지 않도록 한 줄(가로 스크롤)로 표시.
+    # 주소는 숨기지 않고 글자 그대로 둔다(GPT가 페이지 글자에서 주소를 읽음) — display:none·details 접기 금지
+    urls = " | ".join(f"{BASE_URL}{date}-gpt-{k}.txt" for k in range(1, n_files + 1))
+    block = (f'{TOP_MARK}<div style="padding:3px 10px;margin:4px 8px;border:1px solid #cfe0d6;border-radius:6px;'
+             f'background:#f3f8f5;color:#557;font-size:11px;line-height:1.5;white-space:nowrap;overflow-x:auto">'
+             f'GPT용 원고 텍스트(파일 {n_files}개) — 목록: {BASE_URL}{date}-gpt-index.txt | {urls}</div>{TOP_MARK}-end')
     m = re.search(r"<body[^>]*>", page)
     if not m:
         return page
